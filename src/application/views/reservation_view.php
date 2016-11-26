@@ -10,7 +10,7 @@ $(function(){
    $(".nav").find(".active").removeClass("active");
    $("#reservation").parent().addClass("active");
 
-   resizeContent();
+   adaptWebPage();
 
    $(window).resize(function() {
         resizeContent();
@@ -20,6 +20,10 @@ $(function(){
 
 var iteration = 0;
 
+function adaptWebPage() {
+   resizeContent();
+   renameStep();
+}
 
 function resizeContent(){
    	var windowHeight =$(window).height();
@@ -28,6 +32,12 @@ function resizeContent(){
    	var midPageHeight = windowHeight - headerWindowHeight ;
    	var buttomPageHeight = topPageHeight;
    	
+    $('.round-div').css({'bottom': windowHeight / 8});
+
+    var width = $("#center-div").width();
+    var windowWidth =$(".container").width();
+    $('#center-div').css({'left': ((windowWidth / 2) - (width / 2))});
+
    	switch (iteration) {
    		case 0:
    			$('#page_1').css({'height': soloPageHeight});
@@ -57,9 +67,18 @@ function resizeContent(){
    	}
 };
 
+function renameStep(){
+  var text = (iteration + 1) + ' / 4';
+  if (iteration > 4){
+    text = 'Done'
+  }
+  $('#step').text(text);
+}
+
 function showNext(){
 	iteration++;
-	resizeContent();
+	adaptWebPage();
+
 	switch (iteration) {
    		case 1:
    			$("#page_1").show();
@@ -74,7 +93,7 @@ function showNext(){
    			$("#page_1").show();
    			$("#page_2").show();
    			$("#page_4").show();
-			$(".button").show();
+			  $(".round-div").show();
    			$("#loading").hide();
    			break;
    		case 4:
@@ -83,22 +102,22 @@ function showNext(){
    			$("#page_3").hide();
    			$("#page_5").hide();
    			$("footer").hide();
-   			$(".button").hide();
+   			$(".round-div").hide();
    			$("#page_4").slideUp(700);
    			$("#loading").slideDown(700);
    			checkTables();
    			return;
    		case 5:
         	$("#loading").slideUp(700);
-   			$("#page_5").slideDown(700);
-        	$(".button").slideDown(700);
+   			  $("#page_5").slideDown(700);
+        	$(".round-div").slideDown(700);
         	$("footer").slideDown(700);
         	return
    		default:
    			break;
    	}
    	
-   	document.getElementById("next").onclick = function() { return false; } 
+   	document.getElementById("next").onclick = function() { return true; } 
    	$("html, body").animate({ scrollTop: $(document).height() }, 1000 , function() {
     	document.getElementById("next").onclick = function() { showNext()} 
   	});
@@ -161,14 +180,20 @@ function checkTables(){
 
 
 
-<a class="button left button-nav">
-    <span style="display: block;">
+<div class="round-div button button_absolute left button-nav">
+    <!-- <span style="display: block;"> -->
         Back
-    </span>
-</a>
+    <!-- </span> -->
+</div>
 
-<a class="button right button-nav" onclick="showNext();" id="next">
-    <span style="display: block;">
+<div class="round-div button button_absolute right button-nav" onclick="showNext();" id="next">
+    <!-- <span style="display: block;"> -->
         Next
-    </span>
-</a>
+    <!-- </span> -->
+</div>
+
+<div class="round-div" id="center-div">
+  <span style="display: block;" id="step">
+        Krok
+  </span>
+</div>

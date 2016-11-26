@@ -12,6 +12,7 @@ class Contact extends CI_Controller {
 
 	public function index()
 	{
-		$this->template->view('contact_view');
+		$this->data['title'] = 'Contact';
+		$this->template->view('contact_view', $this->data);
 	}
 }

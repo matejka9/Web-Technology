@@ -12,6 +12,7 @@ class Menu extends CI_Controller {
 
 	public function index()
 	{
-		$this->template->view('menu_view');
+		$this->data['title'] = 'Menu';
+		$this->template->view('menu_view', $this->data);
 	}
 }

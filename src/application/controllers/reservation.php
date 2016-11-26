@@ -13,7 +13,8 @@ class Reservation extends CI_Controller {
 
 	public function index()
 	{
-		$this->template->view('reservation_view');
+		$this->data['title'] = 'Reservation';
+		$this->template->view('reservation_view', $this->data);
 
 	}
 	public function objednaj(){
