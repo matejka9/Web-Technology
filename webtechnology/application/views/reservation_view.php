@@ -1,10 +1,12 @@
 
+
 <script type="text/javascript" src="<?= base_url()?>assets/bootstrap-master/js/transition.js"></script>
 <script type="text/javascript" src="<?= base_url()?>assets/bootstrap-master/js/collapse.js"></script>
 <script type="text/javascript" src="<?= base_url()?>assets/jquery-ui/jquery-ui.min.js"></script>
 <script type="text/javascript" src="<?= base_url()?>assets/bootstrap-datepicker/js/bootstrap-datepicker.min.js"></script>
 
-
+<script type="text/javascript" src="<?= base_url()?>assets/moment/js/moment.min.js"></script>
+<script type="text/javascript" src="<?= base_url()?>assets/bootstrap-datetimepicker/js/bootstrap-material-datetimepicker.js"></script>
 
 <script type="text/javascript">
 
@@ -23,6 +25,8 @@ $(function(){
       startDate: new Date(),
       endDate: date
     });
+
+   $('#time').bootstrapMaterialDatePicker({ date: false , format : 'HH:mm'});
 
    adaptWebPage();
 
@@ -218,22 +222,39 @@ function checkTables(next){
 </script>
 
 
-<div class="reservation_page" id="page_1">
-	<div class="myDateTimePicker">
+<div class="reservation_page" id="page_1" style='width: 100%;text-align:center;'>
+  <div class ="wraperino">
+	  <div class="myDateTimePicker first">
     
+    </div>
+    <div class="second">
+      <input type='text' id='time' style="position: relative; text-align: center;" >
+    </div>
   </div>
 </div>
 
 <div class="reservation_page" id="page_2" style="display: none;">
-	asgasg
+	<select>
+    <option value="v1">1</option>
+    <option value="v2">2</option>
+    <option value="v3">3</option>
+    <option value="v4">4</option>
+    <option value="v5">5</option>
+    <option value="v6">6</option>
+    <option value="v7">7</option>
+    <option value="v8">8</option>
+</select>
 </div>
 
 <div class="reservation_page" id="page_3" style="display: none;">
-	sdgsdg
+  <input type="checkbox" name="vehicle" value="Bike"> I have a bike<br>
+  <input type="checkbox" name="vehicle" value="Car" checked> I have a car<br>
+</form>
 </div>
 
 <div class="reservation_page" id="page_4" style="display: none;">
-	sdgsdg
+	<label for="pwd">Text:</label>
+  <input type="text" class="form-control" id="pwd">
 </div>
 
 <div class="reservation_page loading" id="loading" style="display: none;">

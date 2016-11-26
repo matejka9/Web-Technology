@@ -11,6 +11,10 @@
 	<link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
 	<link href="<?= base_url()?>assets/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
+	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+	<link href="<?= base_url()?>assets/bootstrap-datetimepicker/css/bootstrap-material-datetimepicker.css" rel="stylesheet">
+
 	<link href="<?= base_url()?>assets/bootstrap-datepicker/css/bootstrap-datepicker.min.css" rel="stylesheet">
 	<link href="<?= base_url()?>assets/bootstrap-datepicker/css/bootstrap-datepicker3.min.css" rel="stylesheet">
 	<link href="<?= base_url()?>assets/bootstrap-datepicker/css/bootstrap-datepicker.standalone.css" rel="stylesheet">

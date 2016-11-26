@@ -15,6 +15,37 @@ body{
 
 }
 
+
+.reservation_page{
+    min-height: 500px;
+    position: relative; 
+    display: flex;
+    justify-content:center;
+    align-items:center;
+}
+
+.wraperino {
+
+}
+.first {
+    display: inline-block;
+    white-space: normal;
+    vertical-align: middle;
+    text-align:center;
+
+    font: 12px/1.5 Arial, sans-serif;
+}
+.second {
+    
+    display: inline-block;
+    white-space: normal;
+    vertical-align: middle;
+    text-align:center;
+
+    font: 12px/1.5 Arial, sans-serif;
+
+}
+
 .navbar {
     top: 0px;
     position: fixed;
@@ -36,10 +67,6 @@ body{
     overflow: hidden;
 }
 
-
-.reservation_page{
-    position: relative;
-}
 
 .round-div {
     padding: 5px;
@@ -90,6 +117,8 @@ body{
                 50% 50% 
                 no-repeat;
 }
+
+
 
 h1{
     font
