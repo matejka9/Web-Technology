@@ -93,16 +93,24 @@ function renameStep(){
   $('#step').text(text);
 }
 
+var selected = -1;
+function selectetNumber(object){
+  var cislo = 0 - object.id;
+  selected = cislo;
+
+  $(".cell").css('background-color', '#fff');
+  $(".cell").css('color', '#000');
+
+  var idcko = "#" + object.id;
+  $(idcko).css('background-color', '#FF7856');
+  $(idcko).css('color', '#fff');
+}
+
 function goBack() {
   iteration--;
   adaptWebPage();
   adaptLayoutNext(false);
   console.log('go back');
-
-  document.getElementById("next").onclick = function() { return true; } 
-    $("html, body").animate({ scrollTop: $(document).height() }, 1000 , function() {
-      document.getElementById("next").onclick = function() { showNext()} 
-    });
 }
 
 function showNext(){
@@ -159,11 +167,11 @@ function adaptLayoutNext(next){
   } else {
     switch (iteration) {
       case 0:
-        $("#page_2").slideUp(700);
+        $("#page_2").hide();
       case 1:
-        $("#page_3").slideUp(700);
+        $("#page_3").hide();
       case 2:
-        $("#page_4").slideUp(700);
+        $("#page_4").hide();
         $("#page_1").show();
         $("footer").show();
         $(".round-div").show();
@@ -175,8 +183,8 @@ function adaptLayoutNext(next){
         $("#page_3").show();
         $("footer").show();
         $(".round-div").show();
-        $("#loading").slideUp(700);
-        $("#page_4").slideDown(700);
+        $("#loading").hide();
+        $("#page_4").show();
         break;
       case 4:
         $("#page_1").hide();
@@ -185,8 +193,8 @@ function adaptLayoutNext(next){
         $("#page_5").hide();
         $("footer").hide();
         $(".round-div").hide();
-        $("#loading").slideDown(700);
-        $("#page_5").slideUp(700);
+        $("#loading").show();
+        $("#page_5").hide();
         checkTables(next);
         break;
       default:
@@ -234,21 +242,28 @@ function checkTables(next){
 </div>
 
 <div class="reservation_page" id="page_2" style="display: none;">
-	<select>
-    <option value="v1">1</option>
-    <option value="v2">2</option>
-    <option value="v3">3</option>
-    <option value="v4">4</option>
-    <option value="v5">5</option>
-    <option value="v6">6</option>
-    <option value="v7">7</option>
-    <option value="v8">8</option>
-</select>
+	<div class="table">
+    <div class="row">
+        <div class="cell button" onclick="selectetNumber(this)" id="1">1</div>
+        <div class="cell button" onclick="selectetNumber(this)" id="2">2</div>
+        <div class="cell button" onclick="selectetNumber(this)" id="3">3</div>
+    </div>
+    <div class="row">
+        <div class="cell button" onclick="selectetNumber(this)" id="4">4</div>
+        <div class="cell button" onclick="selectetNumber(this)" id="5">5</div>
+        <div class="cell button" onclick="selectetNumber(this)" id="6">6</div>
+    </div>
+    <div class="row">
+        <div class="cell button" onclick="selectetNumber(this)" id="7">7</div>
+        <div class="cell button" onclick="selectetNumber(this)" id="8">8</div>
+        <div class="cell button" onclick="selectetNumber(this)" id="9">9</div>
+    </div>
+</div>
 </div>
 
 <div class="reservation_page" id="page_3" style="display: none;">
   <input type="checkbox" name="vehicle" value="Bike"> I have a bike<br>
-  <input type="checkbox" name="vehicle" value="Car" checked> I have a car<br>
+  <input type="checkbox" name="vehicle" value="Car"> I have a car<br>
 </form>
 </div>
 

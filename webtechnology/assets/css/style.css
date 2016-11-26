@@ -118,7 +118,25 @@ body{
                 no-repeat;
 }
 
-
+.table {
+    display:table;
+    text-align: center;
+    width:50%;
+    height:50%;
+    border:1px solid #000;
+}
+.row {
+    display:table-row;
+    height:33%;
+    vertical-align: middle;
+}
+.cell {
+    display:table-cell;
+    width:33%;
+    height:33%;
+    border:1px solid #CCC;
+    vertical-align: middle;
+}
 
 h1{
     font
