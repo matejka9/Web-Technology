@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<notes>
+<note>
+  <id>0</id>
+  <todo>XML</todo>
+  <from>Lukas</from>
+  <body>create xml viewer</body>
+</note>
+    
+<note>
+  <id>1</id>
+  <todo>XML</todo>
+  <from>Lukas</from>
+  <body>create xml editor</body>
+</note>
+    
+<note>
+  <id>2</id>
+  <todo>maily</todo>
+  <from>Lukes</from>
+  <body>pozriet maily </body>
+</note>
+</notes>

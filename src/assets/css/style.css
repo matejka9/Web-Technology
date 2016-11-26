@@ -1,0 +1,351 @@
+html{
+    height: 100%;
+}
+body{
+    height: 100%;
+
+    padding-top: 75px;
+    
+
+    background: url('../images/bacground.jpg') 
+                50% 50% ;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    font: 400 14px/1.6 'Open Sans', Verdana, Helvetica, sans-serif;
+
+}
+
+.navbar {
+    top: 0px;
+    position: fixed;
+    z-index: 999;
+    width: 100%;
+}
+
+.container{
+    position: relative;
+    padding: 0;
+    box-shadow: 0px 0px 5px #4B4B4B;
+    background-color: #FFFFFF;
+    border-radius: 5px;
+
+    min-height: calc(100% - 25px);
+
+    margin-bottom: 25px;
+    overflow: hidden;
+}
+
+
+.reservation_page{
+    position: relative;
+}
+
+.button {
+    padding: 5px;
+    background-color: #000000;
+    bottom: 14%;
+    position: fixed;
+    z-index: 999;
+    width: 9%;
+    min-width: 75px;
+    height: 31px;
+    background-color: #fff;
+    text-align: center;
+    box-shadow: 0px 0px 5px #4B4B4B;
+    border-radius: 20px;
+}
+
+.button:hover{
+    background-color: #FF7856;
+    cursor: pointer;
+}
+
+.right {
+    right: 20%;
+}
+
+.left {
+    left: 20%;
+}
+
+.button-nav{
+    display: block;
+}
+
+.button-nav:hover{
+    text-decoration: none;
+    color: #fff;
+    cursor: pointer;
+}
+
+.loading {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    background: url('../gif/loading.gif') 
+                50% 50% 
+                no-repeat;
+}
+
+h1{
+    font
+    : 400 60px/1.3 'Bree Serif', Georgia, serif;
+    text-align: center;
+    color: #3F437E;
+    text-shadow: #fff 0px 0px 2px;
+
+}
+
+.post{
+    position: relative;
+    border-radius: 5px;
+    background-color: #fff;
+    box-shadow: 0px 0px 5px #4B4B4B;
+    width: 90%;
+    margin: 40px auto;
+}
+.post h2{
+    padding: 10px;
+    color: #Fff;
+}
+
+.text_panel{
+    padding: 5px;
+    border-bottom: 1px dotted #606060;
+
+}
+.post_header{
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    background-color: #FF7856;
+}
+small{
+    margin-left: 10px;
+    padding: 5px;
+    color: #BEBEBE;
+    font-size: 7pt;
+}
+.post_body{
+    padding: 10px;
+}
+footer{
+    position: absolute;
+    width: 100%;
+    bottom: 0px;
+}
+.footer-info{
+    background-color: #566AAB;
+    height: 25px;
+    color: #fff;
+    padding: 0px 15px 0px 15px;
+    border-bottom-right-radius: 5px;
+    border-bottom-left-radius: 5px;
+}
+.link {
+    margin: 20px auto;
+    width: 100px;
+    height: 30px;
+    background-color: #fff;
+    text-align: center;
+    box-shadow: 0px 0px 5px #4B4B4B;
+    border-radius: 20px;
+}
+.link_a{
+    padding-top: 4px;
+    display: block;
+    height: 100%;
+    width: 100%;
+    color: #FF7856;
+}
+.link_a:hover{
+    text-decoration: none;
+    color: #fff;
+}
+.link:hover{
+    background-color: #FF7856;
+
+}
+.report_form{
+    padding-top: 20px;
+    margin: 0px auto;
+    width: 90%;
+
+}
+.report_form .form-control{
+    display: inline;
+    width: 49%;
+}
+.report_form .form-control:first-child{
+    margin-right: 2%;
+}
+#report_textarea{
+    margin-top: 20px;
+    display: block;
+    width: 100%;
+}
+.btn{
+    display: block;
+    margin: 10px auto;
+
+
+}
+.addPost_form{
+    margin: 10px auto;
+    width: 90%;
+}
+.addPost_form .form-control:first-child{
+    margin-bottom: 10px;
+}
+.errors{
+    text-align: center;
+    color: #3F437E;
+
+}
+.error_message:first-child{
+    padding-top: 10px;
+    border-top: 1px dotted #000000;
+}
+.warning{
+    padding: 20px;
+    background-color: #8a6d3b;
+    text-align: center;
+    color: white;
+}
+.report_header{
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    background-color: #000;
+}
+.author{
+    margin-top: 20px ;
+    border-radius: 5px;
+    display: inline-block;
+    padding: 5px;
+    color: #fff;
+    width: auto;
+    background-color: #AB3029;
+}
+.author a{
+    color: #fff;
+}
+
+.link_report {
+    margin: 60px auto;
+    width: 100px;
+    height: 30px;
+    background-color: #fff;
+    text-align: center;
+    box-shadow: 0px 0px 5px #4B4B4B;
+    border-radius: 20px;
+}
+.link_report_a{
+    padding-top: 4px;
+    display: block;
+    height: 100%;
+    width: 100%;
+    color: #000;
+}
+.link_report_a:hover{
+    text-decoration: none;
+    color: #fff;
+}
+.link_report:hover{
+    background-color: #000;
+
+}
+.footer-info a{
+    color: #000;
+}
+.section{
+    margin-bottom: 420px;
+}
+
+.wrapper{
+    border-radius: 10px;
+    width: 90%;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #fafafa;
+}
+h2{
+    font: 400 40px/1.3 'Bree Serif', Georgia, serif;
+    text-align: center;
+    color: #5b5a7e;
+    text-shadow: #fff 0px 0px 2px;
+
+}
+.tableEdit{
+    display: inline;
+}
+td.details-control {
+    cursor: pointer;
+}
+.editor_create{
+    float: left;
+    width: 60px;
+}
+.columnWrap{
+    white-space: nowrap;
+
+}
+ table .child{
+    background-color: #f4f4f4;
+}
+table .detail-row{
+    background-color: #f4f4f4;
+}
+.auth_form{
+    width: 60%;
+    margin: 20px auto;
+}
+.auth_form .form-control{
+    margin-bottom: 15px;
+}
+.auth_panel{
+    font: 400 20px/1.3 'Bree Serif', Georgia, serif;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: #FF7856;
+    width: 100%;
+    text-align: right;
+    padding: 20px;
+    color: #A9553D;
+}
+.email_auth{
+    margin-right: 50px;
+}
+.auth_panel a{
+    margin-right: 50px;
+    font: 400 20px/1.3 'Bree Serif', Georgia, serif;
+    color: #fff;
+}
+.auth_panel img{
+    position: relative;
+    top: -2px;
+    height: 30px;
+    width: 30px;
+    margin-right: 20px;
+
+}
+.table-img{
+    position: relative;
+    top: -2px;
+    height: 30px;
+    width: 30px;
+
+}
+.empty_avatar{
+    background-color: #b34c3c;
+    padding: 15px;
+    display: inline-block;
+    margin-right: 20px;
+    position: relative;
+   top: 7px;
+}
+.links{
+    width: 100%;
+    margin: 0 auto;
+    list-style-type: none;
+    display: inline-flex;
+}
