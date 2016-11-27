@@ -1,6 +1,11 @@
+CREATE DATABASE tutorial
+  DEFAULT CHARACTER SET utf8
+  DEFAULT COLLATE utf8_general_ci;
 
-DROP TABLE IF EXISTS 'stoly';
-DROP TABLE IF EXISTS 'reservation';
+USE tutorial;
+
+DROP TABLE IF EXISTS stoly;
+DROP TABLE IF EXISTS reservation;
 
 
 CREATE TABLE stoly
@@ -15,12 +20,14 @@ CREATE TABLE stoly
 
 CREATE TABLE reservation
 (
-  id serial,
+  id INT(6) NOT NULL AUTO_INCREMENT,
   name VARCHAR(20),
-  FOREIGN KEY (stol_id) REFERENCES stoly(id),
-  od TIMESTAMP DEFAULT 0,
-  do TIMESTAMP DEFAULT 0
+  id_stol INT(6) NOT NULL,
+  od TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
   pocet INT,
-  sitalone BOOLEAN
+  sitalone BOOLEAN,
+  PRIMARY KEY (id),
+  FOREIGN KEY (id_stol) REFERENCES stoly(id)
 );
 
+INSERT INTO stoly VALUES (1, 5, 1, 1), (2, 6, 0, 1), (3, 6, 0, 1), (4, 9, 0, 0);
