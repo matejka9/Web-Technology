@@ -13,9 +13,7 @@ Lorem Ipsum je fiktívny text, používaný pri návrhu tlačovín a typografie.
 </section>
 
 <section class="home_page" style="position:relative";>
-	<img class="food_picture1" src="<?= base_url()?>assets/images/food.jpg" alt="food_picture1" style="width:40%;height:40%; padding-right:25px;">
-	<img class="food_picture1" src="<?= base_url()?>assets/images/food.jpg" alt="food_picture1" style="width:40%;height:40%;
-	   padding-left:25px;">
+	<img class="food_picture1 img-responsive" src="<?= base_url()?>assets/images/food.jpg" alt="food_picture1" style="max-width:500px;max-height:500px; height:100%; width:100%;padding-right:25px";>
 </section>
 
 <section class="home_page" style="position:relative;">

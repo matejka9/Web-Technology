@@ -116,13 +116,13 @@ function rename(){
 function renameSuhrn(){
   var sprava = "Your table ";
   if (nearWindow){
-     sprava += "is near window, "
+     sprava += "is near window "
   }
   if(isSmoking){
-    sprava += "is in smoking area, "
+    sprava += "is in smoking area "
   }
   if(sitAlone){
-    sprava += "will not be shared with other customers."
+    sprava += "will not be shared with other customers"
   }
   if (!nearWindow && !isSmoking && !sitAlone){
     sprava = "You have not selected any additional options.";
@@ -397,6 +397,7 @@ $(function(){
 
 <div class="reservation_page" id="page_1" style='width: 100%;text-align:center;'>
   <div class ="wraperino">
+  <h3 style="text-align:center;">Date and Time</h3>
 	  <div class="myDateTimePicker first" id="myDateTimePicker">
     
     </div>
@@ -410,31 +411,31 @@ $(function(){
 </div>
 
 <div class="reservation_page" id="page_2" style="display: none;">
-	<div class="table">
-    <div class="row">
-        <div class="cell button" onclick="selectetNumber(this)" id="1">1</div>
-        <div class="cell button" onclick="selectetNumber(this)" id="2">2</div>
-        <div class="cell button" onclick="selectetNumber(this)" id="3">3</div>
-    </div>
-    <div class="row">
-        <div class="cell button" onclick="selectetNumber(this)" id="4">4</div>
-        <div class="cell button" onclick="selectetNumber(this)" id="5">5</div>
-        <div class="cell button" onclick="selectetNumber(this)" id="6">6</div>
-    </div>
-    <div class="row">
-        <div class="cell button" onclick="selectetNumber(this)" id="7">7</div>
-        <div class="cell button" onclick="selectetNumber(this)" id="8">8</div>
-        <div class="cell button" onclick="selectetNumber(this)" id="9">9</div>
-    </div>
-</div>
+  <h3 style="text-align:center;">Persons: </h3>
+      	<div class="table" style="position:relative;">
+          <div class="row">
+              <div class="cell button" onclick="selectetNumber(this)" id="1">1</div>
+              <div class="cell button" onclick="selectetNumber(this)" id="2">2</div>
+              <div class="cell button" onclick="selectetNumber(this)" id="3">3</div>
+          </div>
+          <div class="row">
+              <div class="cell button" onclick="selectetNumber(this)" id="4">4</div>
+              <div class="cell button" onclick="selectetNumber(this)" id="5">5</div>
+              <div class="cell button" onclick="selectetNumber(this)" id="6">6</div>
+          </div>
+          <div class="row">
+              <div class="cell button" onclick="selectetNumber(this)" id="7">7</div>
+              <div class="cell button" onclick="selectetNumber(this)" id="8">8</div>
+              <div class="cell button" onclick="selectetNumber(this)" id="9">9</div>
+          </div>
+        </div>
 </div>
 
 <div class="reservation_page" id="page_3" style="display: none;">
   <div class="wraperino">
-    <table class="additional_options w3-table w3-striped w3-bordered">
-      <caption>Additional Options</caption>
+  <h3 style="text-align:center">Additional Options</h3>
+    <table class="w3-table w3-striped w3-bordered">
       <form>
-        <tr>
           <th><label for="smoking">Smoking</label></th>
           <td><input type="checkbox" name="vehicle" value="Bike" id="smoking"><br></td>
         </tr>
@@ -452,8 +453,8 @@ $(function(){
 </div>
 
 <div class="reservation_page" id="page_4" style="display: none;">
-	<label for="pwd">Text:</label>
-  <input type="text" class="form-control" id="name">
+	<label for="pwd">Name:</label>
+  <input style="max-width:100%; width:600px; " type="text" class="form-control" id="name">
 </div>
 
 <div class="reservation_page loading" id="loading" style="display: none;">
@@ -461,8 +462,8 @@ $(function(){
 
 <div class="reservation_page" id="page_5" style="display: none;">
 	<div class="wrapperino">
-    <table class="suhrn w3-table w3-striped w3-bordered">
-      <caption>Suhrn</caption>
+  <h3 style="text-align:center;">Recap</h3>
+    <table class="w3-table w3-striped w3-bordered">
         <tr>
           <th>Name</th>
           <td><label id="name2"></label></td>
@@ -476,7 +477,7 @@ $(function(){
           <td><label id="time2"></label></td>
         </tr>
         <tr>
-          <th>Number of people</th>
+          <th>Persons</th>
           <td><label id="number2"></label></td>
         </tr>
         <tr>
@@ -486,6 +487,9 @@ $(function(){
      </table>
   </div>
 </div>
+
+
+
 
 
 
