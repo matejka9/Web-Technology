@@ -14,7 +14,7 @@
 //Sizing
 var headerWindowHeight= 50;
 var headerWindowSpaceHeight= 25;
-var footerWindowSpaceHeight= 25;
+var footerWindowSpaceHeight= 25 + 41;
 
 //Steping
 var iteration = 0;
@@ -196,6 +196,10 @@ function everythingIsGood(){
         window.alert("Choose date and time of visiting");
         return false;
       }
+      var a = cas.split(':'); // split it at the colons
+      var milisec = (+a[0]) * 60 * 60 * 1000 + (+a[1]) * 60 * 1000;
+      cas = milisec;
+      console.log(cas);
     default:
       return true;
   }
@@ -288,23 +292,39 @@ function adaptLayoutBack() {
         break;
     }
 }
+//Persons
+var numberOfPersons = 1;
+
+//Date and time
+var datum;
+var cas;
+
+//isSmoking, nearWindow, sitAlone
+var nearWindow;
+var isSmoking;
+var sitAlone;
+
+
+//Name
+var name;
+
+//Reservation
+var reservationTableId;
 
 function reserveTable(next){
   $.ajax({
         type:"POST",
-        url:"<?php echo base_url(); ?>reservation/objednaj",
-        data:"",
+        url: next? "<?php echo base_url(); ?>reservation/rezervuj" : "<?php echo base_url(); ?>reservation/zrusRezervaciu",
+        data: next? {"numberOfPersons": numberOfPersons, "datum": datum, "cas": cas, "nearWindow": nearWindow, "isSmoking": isSmoking, "sitAlone": sitAlone, "name" : name} : {"reservationTableId" : reservationTableId},
 
         success:function (data) {
           if (data){
             data = JSON.parse(data);
             console.log(data.result);
-            switch (data.result){
-              case 1:
-                window.setTimeout(next? goNext : goBack, 2000);
-                return;
-              default:
-                break;
+            if (data.result > 0){
+              reservationTableId = +data.result;
+              window.setTimeout(next? goNext : goBack, 2000);
+              return;
             }
           }
         window.alert("Something went wrong");
@@ -328,8 +348,8 @@ $(function(){
     startDate: new Date(),
     endDate: date
   }).on('changeDate', function(e){
-      datum = e.date;
-    });;
+    datum = e.date.getTime();
+  });
 
   $('#time').bootstrapMaterialDatePicker({ date: false , format : 'HH:mm'});
 
@@ -378,16 +398,12 @@ $(function(){
 </div>
 </div>
 
-
 <div class="reservation_page" id="page_3" style="display: none;">
-<div class="wraperino">
   <input type="checkbox" name="vehicle" value="Bike" id="smoking"> Smoking<br>
   <input type="checkbox" name="vehicle" value="Car" id="alone"> Alone<br>
   <input type="checkbox" name="vehicle" value="Bike" id="window"> Window<br>
 </form>
 </div>
-</div>
-
 
 <div class="reservation_page" id="page_4" style="display: none;">
 	<label for="pwd">Text:</label>
