@@ -68,11 +68,18 @@ body{
 }
 
 
+.button-slide{
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    padding-bottom: 10%;
+    margin: 0px auto;
+}
+
 .round-div {
     padding: 5px;
-    position: absolute;
+    /*position: absolute;*/
     background-color: #000000;
-    bottom: 100px;
     width: 9%;
     min-width: 75px;
     height: 31px;
@@ -99,6 +106,17 @@ body{
     left: 20%;
 }
 
+.box {
+    display: inline-block;
+    top: 0px;
+}
+
+#help-box {
+    width: 9%;
+    min-width: 75px;
+    height: 31px;
+}
+
 .button-nav{
     display: block;
 }
@@ -123,7 +141,6 @@ body{
     text-align: center;
     width:50%;
     height:50%;
-    border:1px solid #000;
 }
 .row {
     display:table-row;

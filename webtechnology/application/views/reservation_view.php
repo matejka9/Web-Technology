@@ -8,130 +8,215 @@
 <script type="text/javascript" src="<?= base_url()?>assets/moment/js/moment.min.js"></script>
 <script type="text/javascript" src="<?= base_url()?>assets/bootstrap-datetimepicker/js/bootstrap-material-datetimepicker.js"></script>
 
+
 <script type="text/javascript">
 
+//Sizing
 var headerWindowHeight= 50;
 var headerWindowSpaceHeight= 25;
 var footerWindowSpaceHeight= 25;
 
-$(function(){
-   $(".nav").find(".active").removeClass("active");
-   $("#reservation").parent().addClass("active");
-
-   var date = new Date();
-   date.setDate(date.getDate() + 7);
-   $('.myDateTimePicker').datepicker({
-      todayHighlight: true,
-      startDate: new Date(),
-      endDate: date
-    });
-
-   $('#time').bootstrapMaterialDatePicker({ date: false , format : 'HH:mm'});
-
-   adaptWebPage();
-
-   $(window).resize(function() {
-        resizeContent();
-    });
-   
-});
-
+//Steping
 var iteration = 0;
 
-function adaptWebPage() {
-   resizeContent();
-   renameStep();
+//Persons
+var numberOfPersons = 1;
+
+//Date and time
+var datum;
+var cas;
+
+//isSmoking, nearWindow, sitAlone
+var nearWindow;
+var isSmoking;
+var sitAlone;
+
+
+//Name
+var name;
+
+//Persons
+function selectetNumber(object){
+  var id = object.id;
+  if (!id){
+    id = object.attr('id');
+  }
+  var cislo = -(0 - id);
+  numberOfPersons = cislo;
+
+  $(".cell").css('background-color', '#fff');
+  $(".cell").css('color', '#000');
+
+  var idcko = "#" + id;
+  $(idcko).css('background-color', '#FF7856');
+  $(idcko).css('color', '#fff');
 }
 
+//UI
+function adaptWebPage() {
+   resizeContent();
+   rename();
+}
+
+//Sizing
 function resizeContent(){
-   	var windowHeight =$(window).height();
-   	var soloPageHeight = windowHeight - headerWindowHeight - headerWindowSpaceHeight - footerWindowSpaceHeight ;
-   	var topPageHeight = windowHeight - headerWindowHeight - headerWindowSpaceHeight;
-   	var midPageHeight = windowHeight - headerWindowHeight ;
-   	var buttomPageHeight = topPageHeight;
-   	
-    $('.round-div').css({'bottom': windowHeight / 8});
+    var windowHeight =$(window).height();
+    var soloPageHeight = windowHeight - headerWindowHeight - headerWindowSpaceHeight - footerWindowSpaceHeight ;
+    var topPageHeight = windowHeight - headerWindowHeight - headerWindowSpaceHeight;
+    var midPageHeight = windowHeight - headerWindowHeight ;
+    var buttomPageHeight = topPageHeight;
+    
+    $('.button-slide').css({'bottom': windowHeight / 8});
 
     var width = $("#center-div").width();
     var windowWidth =$(".container").width();
     $('#center-div').css({'left': ((windowWidth / 2) - (width / 2))});
 
-   	switch (iteration) {
-   		case 0:
-   			$('#page_1').css({'height': soloPageHeight});
-   			break;
-   		case 1:
-   			$('#page_1').css({'height': topPageHeight});
-   			$('#page_2').css({'height': buttomPageHeight});
-   			break;
-   		case 2:
-   			$('#page_1').css({'height': topPageHeight});
-   			$('#page_2').css({'height': midPageHeight});
-   			$('#page_3').css({'height': buttomPageHeight});
-   			break;
-   		case 3:
-   			$('#page_1').css({'height': topPageHeight});
-   			$('#page_2').css({'height': midPageHeight});
-   			$('#page_3').css({'height': midPageHeight});
-   			$('#page_4').css({'height': buttomPageHeight});
-   			break;
-   		case 4:
-   			$('#loading').css({'height': soloPageHeight});
-   			break;
-   		case 5:
-   			$('#page_5').css({'height': soloPageHeight});
-   		default:
-   			break;
-   	}
-};
+    switch (iteration) {
+      case 0:
+        $('#page_1').css({'height': soloPageHeight});
+        break;
+      case 1:
+        $('#page_1').css({'height': topPageHeight});
+        $('#page_2').css({'height': buttomPageHeight});
+        break;
+      case 2:
+        $('#page_1').css({'height': topPageHeight});
+        $('#page_2').css({'height': midPageHeight});
+        $('#page_3').css({'height': buttomPageHeight});
+        break;
+      case 3:
+        $('#page_1').css({'height': topPageHeight});
+        $('#page_2').css({'height': midPageHeight});
+        $('#page_3').css({'height': midPageHeight});
+        $('#page_4').css({'height': buttomPageHeight});
+        break;
+      case 4:
+        $('#loading').css({'height': soloPageHeight});
+        break;
+      case 5:
+        $('#page_5').css({'height': soloPageHeight});
+      default:
+        break;
+    }
+}
+
+function rename(){
+  renameStep();
+  renameNext();
+  renameBack();
+}
 
 function renameStep(){
-  var text = (iteration + 1) + ' / 4';
-  if (iteration > 4){
-    text = 'Done'
+  renameObject($('#step'), (iteration + 1) + ' / 4', (iteration + 1) + ' / 4', 'Done');
+}
+
+function renameNext(){
+  renameObject($('#next'), 'Next', 'Next', 'Home');
+}
+
+function renameBack(){
+  renameObject($('#back'), null, 'Back', 'Delete');
+}
+
+function renameObject(object, start, during, end){
+  var text;
+  switch (iteration){
+    case 0:
+      text = start;
+      break;
+    case 5:
+      text = end;
+      break;
+    default:
+      text = during;
+      break;
   }
-  $('#step').text(text);
+  object.text(text);
 }
 
-var selected = -1;
-function selectetNumber(object){
-  var cislo = 0 - object.id;
-  selected = cislo;
 
-  $(".cell").css('background-color', '#fff');
-  $(".cell").css('color', '#000');
 
-  var idcko = "#" + object.id;
-  $(idcko).css('background-color', '#FF7856');
-  $(idcko).css('color', '#fff');
-}
+
+
+
 
 function goBack() {
   iteration--;
   adaptWebPage();
-  adaptLayoutNext(false);
+  adaptLayout(false);
   console.log('go back');
+
+  // document.getElementById("next").onclick = function() { return true; } 
+  $("html, body").animate({ scrollTop: $(document).height() }, 700 , function() {
+      // document.getElementById("next").onclick = function() { goNext()} 
+  });
 }
 
-function showNext(){
+function goNext(){
   if (iteration == 5){
     window.location.href = "<?php echo site_url('home'); ?>";
     return;
   }
-	iteration++;
-	adaptWebPage();
-  adaptLayoutNext(true);
+  if (!everythingIsGood()) return;
+  iteration++;
+  adaptWebPage();
+  adaptLayout(true);
 
-  document.getElementById("next").onclick = function() { return true; } 
-    $("html, body").animate({ scrollTop: $(document).height() }, 700 , function() {
-      document.getElementById("next").onclick = function() { showNext()} 
+  // document.getElementById("next").onclick = function() { return true; } 
+  $("html, body").animate({ scrollTop: $(document).height() }, 700 , function() {
+      // document.getElementById("next").onclick = function() { goNext()} 
   });
 }
 
-function adaptLayoutNext(next){
-  console.log(next);
+function everythingIsGood(){
+  switch (iteration){
+    case 3:
+      name = $('#name').val();
+      console.log(name);
+      if (!name || name == "") {
+        window.alert("Choose name for order");
+        return false;
+    }
+    case 2:
+      nearWindow = $("#window").is(":checked");
+      isSmoking = $("#smoking").is(":checked");
+      sitAlone = $("#alone").is(":checked");
+      console.log(nearWindow);
+      console.log(isSmoking);
+      console.log(sitAlone);
+    case 1:
+      //Nic toto sa robi pri klikani rovno, bydefault je vybrate 1
+      console.log(numberOfPersons);
+    case 0:
+      cas = $('#time').val();
+      console.log(datum);
+      console.log(cas);
+      if (!cas || !datum) {
+        window.alert("Choose date and time of visiting");
+        return false;
+      }
+    default:
+      return true;
+  }
+  return true;
+}
+function adaptLayout(next){
   if (next){   
-    switch (iteration) {
+    adaptLayoutNext();
+  } else {
+    adaptLayoutBack();
+  }
+  if (iteration == 0) {
+    $("#back").hide();
+    $("#help-box").show();
+  }else {
+    $("#help-box").hide();
+  }
+}
+
+function adaptLayoutNext(){
+  switch (iteration) {
       case 3:
         $("#page_4").slideDown(700);
       case 2:
@@ -141,7 +226,7 @@ function adaptLayoutNext(next){
       case 0:
         $("#page_1").slideDown(700);
         $("footer").show();
-        $(".round-div").show();
+        $(".box").show();
         $("#loading").hide();
         break;
       case 4:
@@ -150,22 +235,24 @@ function adaptLayoutNext(next){
         $("#page_3").hide();
         $("#page_5").hide();
         $("footer").hide();
-        $(".round-div").hide();
+        $(".box").hide();
         $("#page_4").slideUp(700);
         $("#loading").slideDown(700);
-        checkTables(next);
+        reserveTable(true);
         break;
       case 5:
         $("#loading").slideUp(700);
         $("#page_5").slideDown(700);
-        $(".round-div").slideDown(700);
+        $(".box").slideDown(700);
         $("footer").slideDown(700);
         break;
       default:
         break;
     }
-  } else {
-    switch (iteration) {
+}
+
+function adaptLayoutBack() {
+  switch (iteration) {
       case 0:
         $("#page_2").hide();
       case 1:
@@ -174,7 +261,7 @@ function adaptLayoutNext(next){
         $("#page_4").hide();
         $("#page_1").show();
         $("footer").show();
-        $(".round-div").show();
+        $(".box").show();
         $("#loading").hide();
         break;
       case 3:
@@ -182,7 +269,7 @@ function adaptLayoutNext(next){
         $("#page_2").show();
         $("#page_3").show();
         $("footer").show();
-        $(".round-div").show();
+        $(".box").show();
         $("#loading").hide();
         $("#page_4").show();
         break;
@@ -192,47 +279,77 @@ function adaptLayoutNext(next){
         $("#page_3").hide();
         $("#page_5").hide();
         $("footer").hide();
-        $(".round-div").hide();
+        $(".box").hide();
         $("#loading").show();
         $("#page_5").hide();
-        checkTables(next);
+        reserveTable(false);
         break;
       default:
         break;
     }
-  }
-  if (iteration == 0) $("#back").hide();
 }
 
-function checkTables(next){
-	$.ajax({
+function reserveTable(next){
+  $.ajax({
         type:"POST",
         url:"<?php echo base_url(); ?>reservation/objednaj",
         data:"",
 
         success:function (data) {
-        	if (data){
-        		data = JSON.parse(data);
-        		switch (data.result){
-        			case 1:
-        				window.setTimeout(next? showNext : goBack, 2000);
-        				return;
-        			default:
-        				break;
-        		}
-			}
-			window.alert("Something went wrong");
-			goBack();   		
-		}
-   	});
+          if (data){
+            data = JSON.parse(data);
+            console.log(data.result);
+            switch (data.result){
+              case 1:
+                window.setTimeout(next? goNext : goBack, 2000);
+                return;
+              default:
+                break;
+            }
+          }
+        window.alert("Something went wrong");
+        goBack();       
+      }
+    });
 }
+
+
+
+//Start up
+
+$(function(){
+  $(".nav").find(".active").removeClass("active");
+  $("#reservation").parent().addClass("active");
+
+  var date = new Date();
+  date.setDate(date.getDate() + 7);
+  $('.myDateTimePicker').datepicker({
+    todayHighlight: true,
+    startDate: new Date(),
+    endDate: date
+  }).on('changeDate', function(e){
+      datum = e.date;
+    });;
+
+  $('#time').bootstrapMaterialDatePicker({ date: false , format : 'HH:mm'});
+
+  adaptWebPage();
+
+  $(window).resize(function() {
+    resizeContent();
+  });
+
+  selectetNumber($('#1'));
+   
+});
 
 </script>
 
 
+
 <div class="reservation_page" id="page_1" style='width: 100%;text-align:center;'>
   <div class ="wraperino">
-	  <div class="myDateTimePicker first">
+	  <div class="myDateTimePicker first" id="myDateTimePicker">
     
     </div>
     <div class="second">
@@ -262,14 +379,15 @@ function checkTables(next){
 </div>
 
 <div class="reservation_page" id="page_3" style="display: none;">
-  <input type="checkbox" name="vehicle" value="Bike"> I have a bike<br>
-  <input type="checkbox" name="vehicle" value="Car"> I have a car<br>
+  <input type="checkbox" name="vehicle" value="Bike" id="smoking"> Smoking<br>
+  <input type="checkbox" name="vehicle" value="Car" id="alone"> Alone<br>
+  <input type="checkbox" name="vehicle" value="Bike" id="window"> Window<br>
 </form>
 </div>
 
 <div class="reservation_page" id="page_4" style="display: none;">
 	<label for="pwd">Text:</label>
-  <input type="text" class="form-control" id="pwd">
+  <input type="text" class="form-control" id="name">
 </div>
 
 <div class="reservation_page loading" id="loading" style="display: none;">
@@ -282,22 +400,34 @@ function checkTables(next){
 
 
 
+<div class="button-slide">
+  <div class="box">
+  </div>
 
+  <div class="box" id='help-box'>
+  </div>
 
-<div class="round-div button left button-nav" onclick="goBack();" id="back" style="display: none;">
-    <span style="display: block;">
-        Back
+  <!-- <div class="round-div button left button-nav" onclick="goBack();" id="back" style="display: none;"> -->
+  <div class="round-div button button-nav box" onclick="goBack();" id="back" style="display: none;">  
+      <span style="display: block;">
+          Back
+      </span>
+  </div>
+
+  <!--  <div class="round-div" id="center-div"> -->
+  <div class="round-div box">
+    <span style="display: block;" id="step">
+          Krok
     </span>
-</div>
+  </div>
 
-<div class="round-div button right button-nav" onclick="showNext();" id="next">
-    <span style="display: block;">
-        Next
-    </span>
-</div>
+  <div class="round-div button right button-nav box" onclick="goNext();" id="next">
+      <span style="display: block;">
+          Next
+      </span>
+  </div>
 
-<div class="round-div" id="center-div">
-  <span style="display: block;" id="step">
-        Krok
-  </span>
+  <div class="box">
+  </div>
+
 </div>
