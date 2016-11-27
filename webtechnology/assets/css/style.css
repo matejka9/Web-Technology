@@ -15,7 +15,55 @@ body{
 
 }
 
+.food_picture1{
+    background-repeat: no-repeat;
+    background-attachment: fixed;
 
+}
+
+.home_page{
+    padding:50px;
+    padding-bottom: 0px;
+    position: relative; 
+    display: flex;
+    justify-content:center;
+    align-items:center;
+}
+.menu_page{
+    position: relative; 
+    display: flex;
+    justify-content:center;
+    align-items:center;
+}
+
+#map {
+  height: 400px;
+  width: 100%;
+ }
+
+.monday *{
+    background-color: rgb(255, 153, 153);
+}
+.tuesday *{
+    background-color: rgb(128, 255, 170);
+}
+.wednesday *{
+    background-color: rgb(153, 179, 255);
+}
+.thursday *{
+    background-color: rgb(255, 148, 77);
+}
+.friday *{
+    background-color: rgb(255, 173, 51);
+}
+
+
+.contact_page{
+    position: relative; 
+    display: flex;
+    justify-content:center;
+    align-items:center;
+}
 .reservation_page{
     min-height: 500px;
     position: relative; 
@@ -74,6 +122,7 @@ body{
     justify-content: space-between;
     width: 100%;
     margin: 0px auto;
+    position: relative;
 }
 
 .round-div {
@@ -197,9 +246,9 @@ small{
     padding: 10px;
 }
 footer{
-    position: absolute;
+    position: relative;
     width: 100%;
-    bottom: 0px;
+    /*bottom: 0px;*/
 }
 .footer-info{
     background-color: #566AAB;

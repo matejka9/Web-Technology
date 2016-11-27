@@ -8,13 +8,14 @@
 <script type="text/javascript" src="<?= base_url()?>assets/moment/js/moment.min.js"></script>
 <script type="text/javascript" src="<?= base_url()?>assets/bootstrap-datetimepicker/js/bootstrap-material-datetimepicker.js"></script>
 
+<link rel="stylesheet" href="http://www.w3schools.com/lib/w3.css">
 
 <script type="text/javascript">
 
 //Sizing
 var headerWindowHeight= 50;
 var headerWindowSpaceHeight= 25;
-var footerWindowSpaceHeight= 25 + 41;
+var footerWindowSpaceHeight= 25+ 41;
 
 //Steping
 var iteration = 0;
@@ -34,6 +35,7 @@ var sitAlone;
 
 //Name
 var name;
+
 
 //Persons
 function selectetNumber(object){
@@ -66,7 +68,9 @@ function resizeContent(){
     var midPageHeight = windowHeight - headerWindowHeight ;
     var buttomPageHeight = topPageHeight;
     
-    $('.button-slide').css({'bottom': windowHeight / 8});
+    var height = windowHeight / 12;
+    height = height < 50 ? 31 : height;
+    $('.button-slide').css({'bottom': height});
 
     var width = $("#center-div").width();
     var windowWidth =$(".container").width();
@@ -105,6 +109,31 @@ function rename(){
   renameStep();
   renameNext();
   renameBack();
+  renameSuhrn();
+}
+
+
+function renameSuhrn(){
+  var sprava = "Your table ";
+  if (nearWindow){
+     sprava += "is near window, "
+  }
+  if(isSmoking){
+    sprava += "is in smoking area, "
+  }
+  if(sitAlone){
+    sprava += "will not be shared with other customers."
+  }
+  if (!nearWindow && !isSmoking && !sitAlone){
+    sprava = "You have not selected any additional options.";
+  }
+
+
+  renameObject($('#date2'), null, null, datum);
+  renameObject($('#number2'),null,null, numberOfPersons);
+  renameObject($('#time2'),null,null, cas);
+  renameObject($('#addOpt2'),null,null, sprava);
+  renameObject($('#name2'),null,null, name);
 }
 
 function renameStep(){
@@ -193,7 +222,6 @@ function everythingIsGood(){
       console.log(datum);
       console.log(cas);
       if (!cas || !datum) {
-        window.alert("Choose date and time of visiting");
         return false;
       }
       var a = cas.split(':'); // split it at the colons
@@ -352,7 +380,7 @@ $(function(){
   });
 
   $('#time').bootstrapMaterialDatePicker({ date: false , format : 'HH:mm'});
-
+  
   adaptWebPage();
 
   $(window).resize(function() {
@@ -372,8 +400,11 @@ $(function(){
 	  <div class="myDateTimePicker first" id="myDateTimePicker">
     
     </div>
-    <div class="second">
-      <input type='text' id='time' style="position: relative; text-align: center;" >
+    <div class="wraperino">
+      <div class="second" id="timeBox">
+        <label>Time</label>
+        <input type='text' id='time' style="position: relative; text-align: center;" >
+      </div>
     </div>
   </div>
 </div>
@@ -399,10 +430,25 @@ $(function(){
 </div>
 
 <div class="reservation_page" id="page_3" style="display: none;">
-  <input type="checkbox" name="vehicle" value="Bike" id="smoking"> Smoking<br>
-  <input type="checkbox" name="vehicle" value="Car" id="alone"> Alone<br>
-  <input type="checkbox" name="vehicle" value="Bike" id="window"> Window<br>
-</form>
+  <div class="wraperino">
+    <table class="additional_options w3-table w3-striped w3-bordered">
+      <caption>Additional Options</caption>
+      <form>
+        <tr>
+          <th><label for="smoking">Smoking</label></th>
+          <td><input type="checkbox" name="vehicle" value="Bike" id="smoking"><br></td>
+        </tr>
+        <tr>
+          <th><label for="alone">Alone</label></th>
+          <td><input type="checkbox" name="vehicle" value="Car" id="alone"><br></td>
+        </tr>
+        <tr>
+          <th><label for="window">Window</label></th>
+          <td><input type="checkbox" name="vehicle" value="Bike" id="window"><br></td>
+        </tr>
+      </form> 
+     </table>
+  </div>
 </div>
 
 <div class="reservation_page" id="page_4" style="display: none;">
@@ -414,7 +460,31 @@ $(function(){
 </div>
 
 <div class="reservation_page" id="page_5" style="display: none;">
-	sdgsdg
+	<div class="wrapperino">
+    <table class="suhrn w3-table w3-striped w3-bordered">
+      <caption>Suhrn</caption>
+        <tr>
+          <th>Name</th>
+          <td><label id="name2"></label></td>
+        </tr>
+        <tr>
+          <th>Date</th>
+          <td><label id="date2"></label></td>
+        </tr>
+        <tr>
+          <th>Time</th>
+          <td><label id="time2"></label></td>
+        </tr>
+        <tr>
+          <th>Number of people</th>
+          <td><label id="number2"></label></td>
+        </tr>
+        <tr>
+          <th>Additional options</th>
+          <td><label id="addOpt2"></label></td>
+        </tr>
+     </table>
+  </div>
 </div>
 
 
