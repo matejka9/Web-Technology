@@ -378,12 +378,16 @@ $(function(){
 </div>
 </div>
 
+
 <div class="reservation_page" id="page_3" style="display: none;">
+<div class="wraperino">
   <input type="checkbox" name="vehicle" value="Bike" id="smoking"> Smoking<br>
   <input type="checkbox" name="vehicle" value="Car" id="alone"> Alone<br>
   <input type="checkbox" name="vehicle" value="Bike" id="window"> Window<br>
 </form>
 </div>
+</div>
+
 
 <div class="reservation_page" id="page_4" style="display: none;">
 	<label for="pwd">Text:</label>
